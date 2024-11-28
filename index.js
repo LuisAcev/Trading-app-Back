@@ -1,1 +1,8 @@
-console.log("listos ´para el back")
+import { Server } from "./server/server.js";
+
+const server = new Server();
+
+server.listen();
+
+// server.getExternalMarketData();
+
