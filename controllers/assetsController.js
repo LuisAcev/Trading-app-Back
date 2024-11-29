@@ -5,19 +5,29 @@ import {
   lineCharts,
   volumenChart,
 } from "../helpers/chartsTransform.js";
+import { generateJWT } from "../helpers/generateJWT.js";
 
 export const assetsController = async (req, res = response) => {
-    const chartType = req.params.charts; 
+  const chartType = req.params.charts;
 
-    const validChartTypes = ["candle", "line"];
-    if (!validChartTypes.includes(chartType)) {
-      return res.status(400).json({ error: "Invalid chart type" });
-    }
+  const validChartTypes = ["candle", "line"];
+  if (!validChartTypes.includes(chartType)) {
+    return res.status(400).json({ error: "Invalid chart type" });
+  }
   const data = await AssetsData.find({});
 
-  if (!data || data.length === 0) {
-    return res.status(404).json({ error: "No data found" });
-  }
+  // let token;
+  // try {
+  //   token = await generateJWT({ data: process.env.SECRET_WORD });
+    
+  // } catch (err) {
+  //   console.error("Error:", err);
+  //   return res.status(500).json({ error: "Internal Server Error" });
+  // }
+
+  // if (!data || data.length === 0) {
+  //   return res.status(404).json({ error: "No data found" });
+  // }
 
   switch (chartType) {
     case "candle":
@@ -48,6 +58,6 @@ export const assetsController = async (req, res = response) => {
       });
       break;
     default:
-        return res.status(400).json({ error: "Invalid chart type" });
+      return res.status(400).json({ error: "Invalid chart type" });
   }
 };
