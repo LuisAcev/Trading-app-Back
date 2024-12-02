@@ -1,8 +1,8 @@
 import { request, response } from "express";
 import jwt from "jsonwebtoken";
 
-export const jwtValidation = (req = request, res = response, next) => {
-  const tokenAuth = req.header("chartAuth");
+export const jwtValidationAssets = (req = request, res = response, next) => {
+  const tokenAuth = req.header( 'authorization');
 
   if (!tokenAuth) {
     return res.status(401).json({

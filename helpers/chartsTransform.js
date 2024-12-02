@@ -1,11 +1,11 @@
 export const candelCharts = (chartData) => {
   const data = chartData.map((item) => {
     return {
-      open: item.o,
-      hight: item.h,
-      low: item.l,
-      close: item.c,
-      time: item.t,
+      time: item.k,
+      open: parseFloat(item.v["1. open"]),
+      high: parseFloat(item.v["2. high"]),
+      low: parseFloat(item.v["3. low"]),
+      close: parseFloat(item.v["4. close"]),
     };
   });
   return data;
@@ -14,8 +14,8 @@ export const candelCharts = (chartData) => {
 export const lineCharts = (chartData) => {
   const data = chartData.map((item) => {
     return {
-      time: item.t,
-      value: item.c,
+      time: item.k,
+      value: parseFloat(item.v["4. close"]),
     };
   });
   return data;
@@ -24,11 +24,9 @@ export const lineCharts = (chartData) => {
 export const volumenChart = (chartData) => {
   const data = chartData.map((item) => {
     return {
-      time: item.t,
-      value: item.v,
+      time: item.k,
+      value: parseFloat(item.v["5. volume"]),
     };
   });
   return data;
 };
-
-

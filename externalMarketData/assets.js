@@ -1,19 +1,5 @@
-export const assetes = {
-  data: [
-    "AAPL",
-    "TSLA",
-    "NVDA",
-    "META",
-    "MSFT",
-    "C:EURUSD",
-    "C:EURUSD",
-    "C:USDCAD",
-    "C:USDCOP",
-    "C:USDJPY",
-    "X:BTCUSD",
-    "X:ETHUSD",
-    "X:DOGEUSD",
-    "X:XRPUSD",
-    "X:SOLUSD",
-  ],
+export const assets = {
+  dataStocks: ["AAPL", "TSLA", "NVDA", "META", "MSFT", "IBM"],
+  dataForex: ["EURUSD", "USDCHF", "USDCAD", "USDCOP", "USDJPY", "AUDUSD"],
+  dataCrypto: ["BTCUSD", "ETHUSD", "DOGEUSD", "XRPUSD", "SOLUSD"],
 };
