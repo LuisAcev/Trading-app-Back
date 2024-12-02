@@ -8,6 +8,7 @@ import { getCalculatorRouter } from "../routes/getCalculatorInfo.js";
 import { fetchExternalStocksAssetsData } from "../externalMarketData/fetchExternalStockData.js";
 import { fetchExternalCryptoAssetsData } from "../externalMarketData/fetchExternalCryptoData.js";
 import { fetchExternalForexAssetsData } from "../externalMarketData/fetchExternalForexData.js";
+import { usersRouter } from "../routes/userRouter.js";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ export class Server {
     this.app = express();
     this.port = process.env.PORT;
     this.assetsData = "/api/assetsdata";
+    this.users = "/api/users";
     this.calculator = "/api/calculator";
     this.dataBaseConecction();
     this.middleware();
@@ -24,11 +26,13 @@ export class Server {
 
   rutes() {
     this.app.use(this.assetsData, getAssets);
+    this.app.use(this.users, usersRouter);
     this.app.use(this.calculator, getCalculatorRouter);
   }
   middleware() {
     //CORS para proteger las rutas
     this.app.use(cors());
+    this.app.use(express.json());
   }
   dataBaseConecction() {
     dbConnection();
@@ -36,8 +40,8 @@ export class Server {
 
   async getExternalMarketData() {
     await fetchExternalStocksAssetsData(assets.dataStocks);
-    await fetchExternalCryptoAssetsData( assets.dataCrypto);
-    await fetchExternalForexAssetsData( assets.dataForex);
+    await fetchExternalCryptoAssetsData(assets.dataCrypto);
+    await fetchExternalForexAssetsData(assets.dataForex);
   }
 
   listen() {
