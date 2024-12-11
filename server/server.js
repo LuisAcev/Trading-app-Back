@@ -27,7 +27,7 @@ export class Server {
   rutes() {
     this.app.use(this.assetsData, getAssets);
     this.app.use(this.users, usersRouter);
-    this.app.use(this.calculator, getCalculatorRouter);
+    this.app.use(this.calculator, getCalculatorRouter); 
   }
   middleware() {
     //CORS para proteger las rutas
