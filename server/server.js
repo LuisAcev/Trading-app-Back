@@ -30,8 +30,17 @@ export class Server {
     this.app.use(this.calculator, getCalculatorRouter); 
   }
   middleware() {
+
+    this.app.use((req, res, next) => {
+      res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+      res.setHeader("Cross-Origin-Embedder-Policy", "require-corp"); // Solo si es necesario
+      next();
+    });
     //CORS para proteger las rutas
-    this.app.use(cors());
+    this.app.use(cors({
+      origin: 'http://localhost:3000', // Cambia por tu dominio
+      credentials: true
+    }));
     this.app.use(express.json());
   }
   dataBaseConecction() {

@@ -10,6 +10,7 @@ import { assets } from "../externalMarketData/assets.js";
 export const assetsController = async (req, res = response) => {
   const chartType = req.params.charts;
   const assetType = req.params.asset;
+  const time = req.params.time;
 
   try {
     const validChartTypes = ["candle", "line"];
@@ -80,7 +81,7 @@ export const assetsController = async (req, res = response) => {
       case "candle":
         const dataCandle = {
           ticker: dataAssets[0].symbol,
-          candelCharts: candelCharts(sortedData),
+          candelCharts: candelCharts(sortedData, time),
           volumenChart: volumenChart(sortedData),
         };
 
@@ -91,7 +92,7 @@ export const assetsController = async (req, res = response) => {
       case "line":
         const datalinea = {
           ticker: dataAssets[0].symbol,
-          lineCharts: lineCharts(sortedData),
+          lineCharts: lineCharts(sortedData, time),
           volumenChart: volumenChart(sortedData),
         };
 

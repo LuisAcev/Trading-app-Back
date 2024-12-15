@@ -4,4 +4,4 @@ import { jwtValidationAssets } from "../middleware/jwt-validation.js";
 
 export const getAssets = Router();
 
-getAssets.get("/:charts/:asset",jwtValidationAssets,assetsController)
+getAssets.get("/:charts/:asset/:time",jwtValidationAssets,assetsController)
