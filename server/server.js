@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { assets } from "../externalMarketData/assets.js";
 import { dbConnection } from "../dataBase/config.js";
-import { getAssets } from "../routes/getassets.js";
+import { getAssets } from "../routes/getAssets.js";
 import { getCalculatorRouter } from "../routes/getCalculatorInfo.js";
 import { fetchExternalStocksAssetsData } from "../externalMarketData/fetchExternalStockData.js";
 import { fetchExternalCryptoAssetsData } from "../externalMarketData/fetchExternalCryptoData.js";
