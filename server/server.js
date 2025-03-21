@@ -48,9 +48,16 @@ export class Server {
   }
 
   async getExternalMarketData() {
-    await fetchExternalStocksAssetsData(assets.dataStocks);
-    await fetchExternalCryptoAssetsData(assets.dataCrypto);
-    await fetchExternalForexAssetsData(assets.dataForex);
+    try {
+      await fetchExternalStocksAssetsData(assets.dataStocks);
+      await fetchExternalCryptoAssetsData(assets.dataCrypto);
+      await fetchExternalForexAssetsData(assets.dataForex);
+    } catch (error) {
+      console.error("Error getting Data´s market :", error);
+    } finally {
+      console.log("Next update in 25 hours...");
+      setTimeout(() => this.getExternalMarketData(), 25 * 60 * 60 * 1000);
+    }
   }
 
   listen() {
