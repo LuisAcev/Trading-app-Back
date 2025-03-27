@@ -39,7 +39,7 @@ export class Server {
     //CORS para proteger las rutas
     
     // this.app.use(cors({
-    //   origin: 'http://localhost:3000', // Cambia por tu dominio
+    //   origin: 'http://localhost:3000',
     //   credentials: true
     // }));
     this.app.use(cors());
